@@ -12,8 +12,17 @@ class Covid19Report(APIView):
 
     @staticmethod
     def get(request):
-        daily_serializer = DailyReportSerializer(data=[Covid19DailyData.objects.last()], many=True)
-        daily_serializer.is_valid()
-        total_serializer = TotalReportSerializer(data=[Covid19TotalData.objects.last()], many=True)
-        total_serializer.is_valid()
-        return JsonResponse(dict(daily_report=daily_serializer.data[0], total_report=total_serializer.data[0]))
+        daily_objects = Covid19DailyData.objects.last()
+        total_objects = Covid19TotalData.objects.last()
+        daily_serializer_data = {}
+        total_serializer_data = {}
+        if daily_objects is not None:
+            daily_serializer = DailyReportSerializer(data=[daily_objects], many=True)
+            daily_serializer.is_valid()
+            daily_serializer_data = daily_serializer.data[0]
+
+        if total_objects is not None:
+            total_serializer = TotalReportSerializer(data=[total_objects], many=True)
+            total_serializer.is_valid()
+            total_serializer_data = total_serializer.data[0]
+        return JsonResponse(dict(daily_report=daily_serializer_data, total_report=total_serializer_data))

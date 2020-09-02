@@ -23,7 +23,7 @@ Response:
 {
     "daily_report": {
         "id": 1,
-        "report_date": "2020-09-02",
+        "report_date": "2020-09-01",
         "number_of_tests_for_today": 109443,
         "number_of_patients_for_today": 1572,
         "number_of_deaths_for_today": 47,
@@ -31,7 +31,7 @@ Response:
     },
     "total_report": {
         "id": 1,
-        "report_date": "2020-09-02",
+        "report_date": "2020-09-01",
         "total_number_of_test": 7247935,
         "total_number_of_patients": 271705,
         "total_number_of_deaths": 6417,

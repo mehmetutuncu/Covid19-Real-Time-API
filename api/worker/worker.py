@@ -9,5 +9,5 @@ def run_crawler():
 
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(run_crawler, 'interval', minutes=60)
+    scheduler.add_job(run_crawler, 'interval', seconds=5)
     scheduler.start()
